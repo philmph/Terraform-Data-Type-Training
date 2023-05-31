@@ -41,4 +41,3 @@ locals {
 
   # # Note that once again we receive a tuple instead of a list even with the list comprehension syntax above.
 }
-

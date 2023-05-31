@@ -1,39 +1,12 @@
-# terraform {
-#   required_providers {
-#     azurerm = {
-#       source  = "hashicorp/azurerm"
-#       version = "~> 3.55"
-#     }
-#   }
-# }
-
-# provider "azurerm" {
-#   features {}
-# }
-
-# resource "azurerm_resource_group" "this" {
-#   for_each = toset(local.list)
-
-#   name     = each.key
-#   location = local.region
-# }
-
-# resource "azurerm_resource_group" "this2" {
-#   for_each = toset(local.emptylist)
-
-#   name     = each.key
-#   location = local.region
-# }
-
 locals {
   region = "westeurope"
 
   list      = ["element1", "element2", "element2"]
   emptylist = []
 
-  tuple  = totuple(local.list)
-  tuple1 = [for i, v in local.tuple : "${i} is ${v}"]
-  tuple2 = { for i, v in local.tuple : i => upper(v) }
+  # tuple  = totuple(local.list)
+  # tuple1 = [for i, v in local.tuple : "${i} is ${v}"]
+  # tuple2 = { for i, v in local.tuple : i => upper(v) }
 
   list1 = [for i, v in local.list : "${i} is ${v}"]
   list2 = { for i, v in local.list : i => upper(v) }
@@ -60,4 +33,21 @@ locals {
       age  = 20
     }
   }
+}
+
+locals {
+  my_list_of_maps = [
+    {
+      name    = "Me",
+      surname = "AlsoMe"
+    },
+    {
+      name    = "You",
+      surname = "AlsoYou"
+    },
+  ]
+
+  what_is_my_kv   = { for k, v in local.my_list_of_maps : v.name => { key = k, value = v } }
+  what_is_my_kv_2 = [for i, v in local.my_list_of_maps : "${i} = ${v.name}"]
+  what_is_my_kv_3 = [for o in local.my_list_of_maps : "${o.name} ${o.surname}"]
 }
