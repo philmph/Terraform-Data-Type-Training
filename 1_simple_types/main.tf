@@ -1,5 +1,5 @@
 variable "string" {
-  default = "123"
+  default = "true"
   type    = string
 }
 
@@ -8,7 +8,7 @@ variable "number" {
   type    = number
 }
 
-# Note that a floating number is also of type 'number' in Terraform
+# Note that a floating number is also of the generic type 'number' in Terraform
 variable "float_number" {
   default = 123.123
   type    = number
@@ -19,15 +19,21 @@ varible "bool" {
   type    = bool
 }
 
+# Note that any type could be used here.
+# If var.null is used when the value is set to 'null' the parameter will be ommited.
+variable "null" {
+  default = null
+  type    = bool
+}
+
+# Type Conversions as described at https://developer.hashicorp.com/terraform/language/expressions/types#type-conversion
 locals {
-  string           = "123"
-  string_to_number = tonumber(local.string)
+  bool_true_to_string  = tostring(true)
+  bool_false_to_string = tostring(false)
 
-  number           = 123
-  number_to_string = tostring(local.number)
+  string_true_to_bool  = tobool("true")
+  string_false_to_bool = tobool("false")
 
-  bool           = true
-  bool_to_string = tostring(local.bool)
-
-  string_to_bool = tobool("true")
+  number_to_string = tostring(123)
+  string_to_number = tonumber("123")
 }
