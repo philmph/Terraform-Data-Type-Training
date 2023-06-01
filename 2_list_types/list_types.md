@@ -14,6 +14,14 @@ Key characteristics:
 
 \* Note that a `tuple` is not really a list type but uses the same syntax and referencing mechanism as a `list` does. A `tuple` is used to group elements that belong together without the use of key value pairs. An example would be `["Philipp", 31, "Vienna"]`.
 
+| Type    | Syntax for Elements         | Type in Variables | Identifier            | Ordered | Immutable | Usable in `for_each` |
+| ------- | --------------------------- | ----------------- | --------------------- | ------- | --------- | -------------------- |
+| `list`  | `[element1, element2, ...]` | `list(type)`      | `[0]`, `[1]`, `[...]` | Yes     | No        | No                   |
+| `set`   | `[element1, element2, ...]` | `set(type)`       | -                     | No      | ?         | Yes                  |
+| `tuple` | `[element1, element2, ...]` | `tuple([type])`   | `[0]`, `[1]`, `[...]` | Yes     | Yes       | No                   |
+
+`list` and `tuple` can be used in `for_each` by converting them to a set beforehand using `toset()`.
+
 ## List
 
 Syntax wise, `list` elements are defined using `[element1, element2, ...]`. The function `tolist()` is used to convert another type to a `list`. In variables, `list(type)` is used for the `type` argument.
@@ -57,3 +65,15 @@ When a `set(type)` is defined for a variable `type` arguement it will be of the 
 When a `set` is defined in a `locals` block without using `toset()`, it will be a `tuple` as default behaviour.
 
 Using a function like `max()` on a list, to retrieve the hights number, requires you to expand the list using `...` syntax. F.e. `max(var.my_list...)`.
+
+## Notes
+
+# Type `set` is
+
+# - unordered
+
+# - can NOT contain duplicate values
+
+# - is required to have all values to be of the same underlaying type
+
+# - is defined as list(type) and any is the most generic version of it
