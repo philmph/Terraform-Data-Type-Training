@@ -1,9 +1,3 @@
-# Type `set` is
-# - unordered
-# - can NOT contain duplicate values
-# - is required to have all values to be of the same underlaying type
-# - is defined as list(type) and any is the most generic version of it
-
 # set is defined as `set(type)`. In older Terraform versions (type) could be ommited
 # It is recommended to write the full syntax version
 variable "set_any" {
@@ -39,16 +33,5 @@ locals {
   # Advanced use of List Comprehension
   list_comprehension_advanced = [for i, o in var.set_any : "Element ${upper(o)} is at identifier value ${i}" if can(regex("[^\\d]", o))]
 
-  # ! Note that once again we receive a tuple for the list comprehension instead of a list
-  # > type(local.list_comprehension)
-  # tuple([
-  #     string,
-  #     string,
-  #     string,
-  #     string,
-  # ])
-  # > type(local.list_comprehension_advanced)
-  # tuple([
-  #     string,
-  # ])
+  # ! The list comprehensions show that there is no identifier 0, 1, ... in a set compared to `list` or `tuple`
 }
