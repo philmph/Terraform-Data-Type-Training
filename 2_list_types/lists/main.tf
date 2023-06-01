@@ -1,17 +1,5 @@
-# Type `list` is
-# - ordered and values can be referenced with [0], [1], ... starting at 0
-# - can contain duplicate values
-# - is required to have all values to be of the same underlaying type
-# - is defined as list(type) and any is the most generic version of it
-
-# In this example, list(any) will therefore result in a list(string).
-# The variable `list_string` below, is the same.
-
-# > type(var.list_any)
-# list(string)
-# > type(var.list_string)
-# list(string)
-variable "list_any" {
+# list(any) is the same as list
+variable "list" {
   default = [1, "2", false, 2]
   type    = list(any)
 }
