@@ -1,12 +1,9 @@
-# List Types
+# Structural Types
 
-Available list types are
+Available structural types are
 
-- `list`
-- `set`
-- `tuple` \*
-
-\* Note that a `tuple` is not really a list type but uses the same syntax and referencing mechanism as a `list` does. A `tuple` is per definition a structural type used to group elements that belong together without the use of key value pairs. An example would be `["Philipp", 31, "Vienna"]`.
+- `map`
+- `object`
 
 ## Key characteristics
 
@@ -24,7 +21,7 @@ Available list types are
 
 \*\* `list` and `tuple` can be used in `for_each` by converting them to a set beforehand using `toset()`.
 
-## Key Take-Aways
+## Key take aways
 
 A list `[]` f.e. `[value1, value2]` definition defaults to a `tuple`. Only enclosing the `[]` in a conversion function f.e. `tolist()`, `toset()` will result in the expected type. However, `tuple` is sufficient for the most usecases.
 
