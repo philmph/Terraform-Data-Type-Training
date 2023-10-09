@@ -1,5 +1,7 @@
 # Terraform Data Types Training
 
+**_Stopped development of this side project. Will likely continue when I feel like it some time in the future._**
+
 This repo simply showcases some data type handling with inline comment blocks.
 
 I am trying to keep this as structured and easy to follow through as possible. However, I found it to be very difficult to do so. For all folders contains a `main.tf` file the following applies:
