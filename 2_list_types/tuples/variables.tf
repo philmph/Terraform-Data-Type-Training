@@ -10,3 +10,9 @@ variable "tuple_any" {
   default = ["1"]
   type    = tuple([any])
 }
+
+# Will also result in a tuple when not otherwise stongly typed with set() or list()
+variable "any" {
+  default = ["1"]
+  type    = any
+}

@@ -11,4 +11,17 @@ locals {
 
   # Advanced use of List Comprehension
   list_comprehension_advanced = [for i, o in var.tuple : "Element ${upper(o)} is at identifier value ${i}" if can(regex("[^\\d]", o))]
+
+  # ! Note that once again we receive a tuple for the list comprehension instead of a list type
+  # > type(local.list_comprehension)
+  # tuple([
+  #     string,
+  #     string,
+  #     string,
+  #     string,
+  # ])
+  # > type(local.list_comprehension_advanced)
+  # tuple([
+  #     string,
+  # ])
 }
