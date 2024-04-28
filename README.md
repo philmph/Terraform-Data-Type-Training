@@ -1,5 +1,7 @@
 # Terraform Data Types Training
 
+**_I will not be updating it anymore as per 28-04-2024._**
+
 I will use this repository to showcases, uses and explains the various data types of Terraform.
 
 All sub-folders contain a `README.md` which describes the contents of the folder.
@@ -13,8 +15,6 @@ All sub-folders contain a `README.md` which describes the contents of the folder
 - [Simple Types](./1_simple_types/README.md)
 - [List Types](./2_list_types/README.md)
 - [Structural Types](./3_structural_types/README.md)
-- [Using `count`](./4_using_count/README.md)
-- [Using `for_each`](./5_using_for_each/README.md)
 
 ## How to use
 
