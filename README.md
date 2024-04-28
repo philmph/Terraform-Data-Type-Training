@@ -24,8 +24,8 @@ While writing and testing the code snippets, I've used `terraform` in version `v
 
 ## References
 
-[Terraform Docs / Types and Values](https://developer.hashicorp.com/terraform/language/expressions/types)
-[Terraform Docs / Type Constraints](https://developer.hashicorp.com/terraform/language/expressions/type-constraints)
+- [Terraform Docs / Types and Values](https://developer.hashicorp.com/terraform/language/expressions/types)
+- [Terraform Docs / Type Constraints](https://developer.hashicorp.com/terraform/language/expressions/type-constraints)
 
 ## License
 
