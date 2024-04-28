@@ -6,6 +6,14 @@ Available types are
 - `number`
 - `bool`
 
+## Overview
+
+| Type     | Syntax for Elements | Type in Variables |
+| -------- | ------------------- | ----------------- |
+| `string` | `"string"`          | `string`          |
+| `number` | `123`, `123.123`    | `number`          |
+| `bool`   | `true`, `false`     | `bool`            |
+
 ## Key Take-Aways
 
 - Terraform tries Type Conversion automatically if required
