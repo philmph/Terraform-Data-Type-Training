@@ -1,20 +1,26 @@
 # Terraform Data Types Training
 
-**_Stopped development of this side project. Will likely continue when I feel like it some time in the future._**
+**_I will not be updating it anymore as per 28-04-2024._**
 
-This repo simply showcases some data type handling with inline comment blocks.
+I will use this repository to showcases, uses and explains the various data types of Terraform.
 
-I am trying to keep this as structured and easy to follow through as possible. However, I found it to be very difficult to do so. For all folders contains a `main.tf` file the following applies:
+All sub-folders contain a `README.md` which describes the contents of the folder.
 
+- `README.md` explains the content of the folder.
 - `variables.tf` shows how to define the Data Type. They are not used in the `main.tf` file.
 - `main.tf` defines Variables in a `locals` block to show basic handling of the Data Type.
-- `for.tf` show examples if the given Data Type has some kind of an identifier.
+
+## Content
+
+- [Simple Types](./1_simple_types/README.md)
+- [List Types](./2_list_types/README.md)
+- [Structural Types](./3_structural_types/README.md)
 
 ## How to use
 
-The Terraform function `type()` is not available for `plan` or `apply` so I can't properly showcase data types with `output`.
+Switch into the desired folder, and run `terraform console`. Inspect variables and locals via CLI. `type()` is only available in `console` and very helpful to learn and understand `type()`.
 
-Instead you will need to change into the directories (f.e. `./1_simple_types`) and run the code interactively using `terraform console`. Examples are given in the corresponding `.md` file in the folder.
+Note: `terraform` in version v1.8.2 (Mac) was used during creation of this Repository.
 
 ## References
 

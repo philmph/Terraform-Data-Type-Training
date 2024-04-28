@@ -1,21 +1,13 @@
-# set is defined as `set(type)`. In older Terraform versions (type) could be ommited
-# It is recommended to write the full syntax version
-variable "set_any" {
-  default = ["1", 2, "3", false, "2"]
-  type    = set(any)
-}
-
-variable "set_number" {
-  default = [1, 2, 3, 2]
-  type    = set(number)
-}
-
-variable "set_string" {
-  default = ["1", "2", "3", "false", "2"]
-  type    = set(string)
-}
-
 locals {
+  # Referencing like with lists and tuples is not possible with sets:
+
+  # Elements of a set are identified only by their value and don't have any separate index or key to select with,
+  # so it's only possible to perform operations across all elements of the set.
+
+  # Note that this is commented out because it produces an error
+  # any_1    = var.set_any[0]
+  # any_1    = var.set_any["1"]
+
   # Note that this list is going to be a tuple
   set_of_numbers = [1, 10, 100]
 
@@ -33,5 +25,5 @@ locals {
   # Advanced use of List Comprehension
   list_comprehension_advanced = [for i, o in var.set_any : "Element ${upper(o)} is at identifier value ${i}" if can(regex("[^\\d]", o))]
 
-  # ! The list comprehensions show that there is no identifier 0, 1, ... in a set compared to `list` or `tuple`
+  # ! The list comprehensions show that there is no identifier 0, 1, ... in a set compared to `list` or `tuple`:
 }
