@@ -10,11 +10,11 @@ All sub-folders contain a `README.md` which describes the contents of the folder
 
 ## Content
 
-- [Simple Types](./1_simple_types/)
-- [List Types](./2_list_types//)
-- [Structural Types](./3_structural_types/)
-- [Using `count`](./4_using_count/)
-- [Using `for_each`](./5_using_for_each/)
+- [Simple Types](./1_simple_types/README.md)
+- [List Types](./2_list_types/README.md)
+- [Structural Types](./3_structural_types/README.md)
+- [Using `count`](./4_using_count/README.md)
+- [Using `for_each`](./5_using_for_each/README.md)
 
 ## How to use
 
