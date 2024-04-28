@@ -7,13 +7,13 @@ locals {
   any_type = null
   # If `local.any_type` is used (f.e. in a resource) the parameter will be ommited becuase the value is `null`.
   # Since Terraform can't assign a type to `local.any_type` it will be of type `dynamic`.
-  # Showcased in `null_resource.this` below
+  # Showcased in `random_string.this` below
 
   # Type Conversions as described at https://developer.hashicorp.com/terraform/language/expressions/types#type-conversion
-  bool_true_to_string  = tostring(true)
-  bool_false_to_string = tostring(false)
+  bool_true_to_string = tostring(true)
+  string_true_to_bool = tobool("true")
 
-  string_true_to_bool  = tobool("true")
+  bool_false_to_string = tostring(false)
   string_false_to_bool = tobool("false")
 
   number_to_string = tostring(123)
