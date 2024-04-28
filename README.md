@@ -20,6 +20,8 @@ All sub-folders contain a `README.md` which describes the contents of the folder
 
 Switch into the desired folder, and run `terraform console`. Inspect variables and locals via CLI. `type()` is only available in `console` and very helpful to learn and understand `type()`.
 
+Note: `terraform` in version v1.8.2 (Mac) was used during creation of this Repository.
+
 ## References
 
 [Terraform Docs / Types and Values](https://developer.hashicorp.com/terraform/language/expressions/types)
