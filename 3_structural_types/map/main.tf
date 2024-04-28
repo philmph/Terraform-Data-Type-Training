@@ -1,5 +1,5 @@
 locals {
-  # Note that this map and also complex_map below is going to be a object
+  # ! Note that this map and also complex_map below is going to be a object
   map = {
     name     = "Philipp",
     age      = "31",
@@ -9,6 +9,7 @@ locals {
   # Referencing a value of a map
   map_ref = var.map["name"]
 
+  # Is going to be a object of objects instead of a map of maps as expected
   complex_map = {
     Philipp = {
       age      = "31",
@@ -23,7 +24,7 @@ locals {
   # Referencing a value of a complex map
   complex_map_ref = local.complex_map["Philipp"]["location"]
 
-  # Note that this list of maps is going to be a tuple of objects
+  # ! Note that this list of maps is going to be a tuple of objects
   list_of_maps = [
     {
       name     = "Philipp",

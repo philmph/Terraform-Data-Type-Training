@@ -1,90 +1,78 @@
-# locals {
-#   # Note that this map and also complex_map below is going to be a object
-#   map = {
-#     name     = "Philipp",
-#     age      = "31",
-#     location = "Vienna"
-#   }
+locals {
+  my_complex_map = tomap({
+    key  = "value"
+    key2 = 1
+    key3 = true
+  })
 
-#   # Referencing a value of a map
-#   map_ref = var.map["name"]
+  # Same as in the map example but this time the default type is correct
+  object = {
+    name     = "Philipp",
+    age      = 31,
+    location = "Vienna",
+    is_human = true
+  }
 
-#   complex_map = {
-#     Philipp = {
-#       age      = "31",
-#       location = "Vienna"
-#     },
-#     Someoneelse = {
-#       age      = "18",
-#       location = "Berlin"
-#     },
-#   }
+  # ! Important to note the a key difference is, that the objects can consist of different types
+  # > type(local.object)
+  # object({
+  #     age: number,
+  #     is_human: bool,
+  #     location: string,
+  #     name: string,
+  # })
 
-#   # Referencing a value of a complex map
-#   complex_map_ref = local.complex_map["Philipp"]["location"]
+  # Referencing a value of an object
+  object_ref = var.object["name"]
 
-#   # Note that this list of maps is going to be a tuple of objects
-#   list_of_maps = [
-#     {
-#       name     = "Philipp",
-#       age      = "31",
-#       location = "Vienna"
-#     },
-#     {
-#       name     = "Someoneelse",
-#       age      = "18",
-#       location = "Berlin"
-#     }
-#   ]
+  complex_object = {
+    Philipp = {
+      age      = 31,
+      location = "Vienna"
+      is_human = true
+    },
+    Someoneelse = {
+      age      = 18,
+      location = "Berlin"
+      is_human = true
+    },
+  }
 
-#   # Referencing a value of a list of maps
-#   list_of_maps_ref = local.list_of_maps[0]["name"]
+  # Referencing a value of a complex object
+  complex_object_ref = local.complex_object["Philipp"]["location"]
 
-#   # To specify them as map() the function tomap() needs to be used
-#   # Note that this is not required as a object also works fine for most usecases
-#   map_strongly_typed = tomap({
-#     name     = "Philipp",
-#     age      = "31",
-#     location = "Vienna"
-#   })
+  # This is going to be a tuple of objects
+  list_of_objects = [
+    {
+      name     = "Philipp",
+      age      = 31,
+      location = "Vienna"
+      is_human = true
+    },
+    {
+      name     = "Someoneelse",
+      age      = 18,
+      location = "Berlin"
+      is_human = true
+    }
+  ]
 
-#   complex_map_strongly_typed = tomap({
-#     Philipp = tomap({
-#       age      = "31",
-#       location = "Vienna"
-#     }),
-#     Someoneelse = tomap({
-#       age      = "18",
-#       location = "Berlin"
-#     }),
-#   })
+  # Referencing a value of a list of objects
+  list_of_objects_ref = local.list_of_objects[0]["name"]
 
-#   list_of_maps_strongly_typed = tolist([
-#     tomap({
-#       name     = "Philipp",
-#       age      = "31",
-#       location = "Vienna"
-#     }),
-#     tomap({
-#       name     = "Someoneelse",
-#       age      = "18",
-#       location = "Berlin"
-#     })
-#   ])
+  # List Comprehension to show object identifiers
+  list_comprehension = [for i, o in var.object : "Element ${o} is at identifier value ${i}"]
 
-#   # List Comprehension to show map identifiers
-#   list_comprehension = [for i, o in var.map : "Element ${o} is at identifier value ${i}"]
+  # Advanced use of List Comprehension
+  list_comprehension_advanced = [for i, o in var.object : "Element ${upper(o)} is at identifier value ${i}" if can(regex("[^\\d]", o))]
 
-#   # Advanced use of List Comprehension
-#   list_comprehension_advanced = [for i, o in var.map : "Element ${upper(o)} is at identifier value ${i}" if can(regex("[^\\d]", o))]
+  # List Comprehension on complex object
+  list_comprehension_complex = [for i, o in local.complex_object : [for k, l in o : "Element ${l} is at identifier value ${k} in object ${i}"]]
 
-#   # List Comprehension on complex map
-#   list_comprehension_complex = [for i, o in local.complex_map : [for k, l in o : "Element ${l} is at identifier value ${k} in map ${i} "]]
+  # List Comprehension on list of objects
+  list_comprehension_list = [for i, o in local.list_of_objects : [for k, l in o : "Element ${l} is at identifier value ${k} in object ${i}"]]
 
-#   # List Comprehension on list of maps
-#   list_comprehension_list = [for i, o in local.list_of_maps : [for k, l in o : "Element ${l} is at identifier value ${k} in map ${i} "]]
-
-#   # How to make this useful and usable in for_each? Create a map from the list with unique identifiers f.e.
-#   # Using the list position f.e. 0, 1, ... is not recommended as it will cause rebuilds on list change
-#   list_comprehension_list_to_map = { for o in local.list_of_maps : o.name => o }
-# }
+  # How to make this useful and usable in for_each? Create a object from the list with unique identifiers f.e.
+  # Using the list position f.e. 0, 1, ... is not recommended as it will cause rebuilds on list change
+  list_comprehension_list_to_object = { for o in local.list_of_objects : o.name => o }
+}
